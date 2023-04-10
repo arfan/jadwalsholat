@@ -18,7 +18,6 @@ body {
     margin: 0px;
     border: none;
     border-collapse: collapse;
-
 }
 
 /* CLOCK AND DATE */
@@ -28,49 +27,48 @@ body {
 #clock{
     padding: 20px;
     font-family: sevenSegment;
-    font-size: 6.5vw;
+    font-size: 13vmin;
     color: red;
 }
 #date {
     font-family: sevenSegment;
     color: red;
-    font-size: 5vw;
+    font-size: 9vmin;
 }
 #day_name {
     color: red;
     font-family: roboto;
-    font-size: 3vw;
+    font-size: 6vmin;
 }
 
 /* MASJID NAME AND LOCATION */
 #masjid_name_location {
     background-color: rgba(0, 0, 0, 0.7);
-    padding-left: 50px;
-    padding-right: 50px;
 }
 #masjid_name_1 {
     color: #63a193;
-    font-size: 5vw;
+    font-size: 7vmin;
 }
+
 #masjid_name_2 {
     color: #63a193;
-    font-size: 7vw;
+    font-size: 10vmin;
 }
 #masjid_location {
     color: #63a193;
-    font-size: 3vw;
+    font-size: 7vmin;
 }
 
 /* PRAYER TIME AND NAME*/
 .prayer_time {
     font-family: sevenSegment;
     color: red;
-    font-size: 4.5vw;
+    font-size: 10vmin;
 }
 .prayer_name {
     font-family: roboto;
     color: #d8d6af;
-    font-size: 3vw;
+    font-size: 7vmin;
 }
 .prayer_time_name {
     background-color: rgba(0, 0, 0, 0.7);
@@ -87,12 +85,70 @@ body {
     margin-left: 20px;
     font-family: roboto;
     color: red;
-    font-size: 6vw;
+    font-size: 6vmin;
 }
 
 #count_time {
     margin-left: 20px;
     font-family: sevenSegment;
     color: red;
-    font-size: 8vw;
+    font-size: 8vmin;
+}
+
+#inner_count_time {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* MODAL START */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* semi-transparent black overlay */
+    z-index: 9999;
+    display: none; /* hide the modal by default */
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 400px;
+    max-width: 90%;
+    max-height: 90%;
+    /*overflow-y: auto;*/
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.modal-header h2 {
+    margin: 0;
+}
+
+.modal-close {
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ccc;
+}
+
+.modal-ok {
+    cursor: pointer;
+    font-size: 14px;
+    /*font-weight: bold;*/
+    margin-top: 10px;
+    float:right;
+    /*color: #ccc;*/
 }
