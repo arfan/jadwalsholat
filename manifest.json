@@ -1,6 +1,6 @@
 {
-  "name": "Your PWA Name",
-  "short_name": "PWA Short Name",
+  "name": "Jadwal Sholat",
+  "short_name": "Jadwal Sholat",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
