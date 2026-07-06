@@ -78,12 +78,12 @@ td {
 
 #masjid_name_1 {
   color: #63a193;
-  font-size: 7vmin;
+  font-size: 9vmin;
 }
 
 #masjid_name_2 {
   color: #63a193;
-  font-size: 10vmin;
+  font-size: 9vmin;
 }
 
 .editable-masjid-text {
@@ -316,13 +316,13 @@ td {
 
   #masjid_name_1 {
     padding: 12px 4px 4px;
-    font-size: 7vw;
+    font-size: 8vw;
     white-space: nowrap;
   }
 
   #masjid_name_2 {
     padding: 12px 4px 4px;
-    font-size: 9vw;
+    font-size: 8vw;
     white-space: nowrap;
   }
 
