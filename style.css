@@ -12,12 +12,17 @@ body {
     margin: 0px;
 }
 
+table {
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
 #main_table {
     background-color: white;
     background-size: cover;
     margin: 0px;
     border: none;
-    border-collapse: collapse;
 }
 
 /* CLOCK AND DATE */
@@ -151,4 +156,50 @@ body {
     margin-top: 10px;
     float:right;
     /*color: #ccc;*/
+}
+
+#city-search {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #cfcfcf;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.city-results {
+    max-height: 320px;
+    overflow-y: auto;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+.city-result-item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 12px;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.city-result-item:hover,
+.city-result-item.is-selected {
+    background: #e8f3ef;
+}
+
+.city-result-item:last-child {
+    border-bottom: 0;
+}
+
+.city-result-empty {
+    padding: 10px 12px;
+    color: #666;
+    font-size: 14px;
 }

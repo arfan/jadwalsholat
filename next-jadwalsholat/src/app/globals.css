@@ -1,0 +1,393 @@
+@font-face {
+  font-family: sevenSegment;
+  src: url('/Segment7Standard.otf');
+}
+
+@font-face {
+  font-family: roboto;
+  src: url('/roboto.ttf');
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background: #000;
+  font-family: roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+table {
+  border: 0;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 0;
+}
+
+#main_table {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  background-image: url('/masjid.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  table-layout: fixed;
+}
+
+#clock_date,
+#masjid_name_location,
+.prayer_time_name,
+#counter {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.prayer-row > td {
+  padding-inline: 3px;
+}
+
+#clock {
+  padding: 20px;
+  font-family: sevenSegment, monospace;
+  font-size: 13vmin;
+  color: red;
+}
+
+#date {
+  font-family: sevenSegment, monospace;
+  color: red;
+  font-size: 9vmin;
+}
+
+#day_name {
+  color: red;
+  font-family: roboto, sans-serif;
+  font-size: 6vmin;
+}
+
+#masjid_name_1 {
+  color: #63a193;
+  font-size: 7vmin;
+}
+
+#masjid_name_2 {
+  color: #63a193;
+  font-size: 10vmin;
+}
+
+.editable-masjid-text {
+  cursor: pointer;
+}
+
+.editable-masjid-text:focus-visible,
+#masjid_location:focus-visible {
+  outline: 2px solid #63a193;
+  outline-offset: 4px;
+}
+
+#masjid_location {
+  color: #63a193;
+  font-size: 7vmin;
+  cursor: pointer;
+}
+
+.prayer_time {
+  font-family: sevenSegment, monospace;
+  color: red;
+  font-size: 10vmin;
+}
+
+.prayer_name {
+  font-family: roboto, sans-serif;
+  color: #d8d6af;
+  font-size: 7vmin;
+}
+
+#counter {
+  opacity: 0;
+}
+
+#count_title {
+  margin-left: 20px;
+  font-family: roboto, sans-serif;
+  color: red;
+  font-size: 6vmin;
+}
+
+#count_time {
+  margin-left: 20px;
+  font-family: sevenSegment, monospace;
+  color: red;
+  font-size: 8vmin;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 400px;
+  max-width: 90%;
+  max-height: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.modal-close {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ccc;
+}
+
+.modal-body {
+  padding-top: 12px;
+}
+
+#city-search {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cfcfcf;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.city-results {
+  max-height: 320px;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background: #fff;
+  margin-bottom: 10px;
+}
+
+.city-result-item {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-bottom: 1px solid #eee;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.city-result-item:hover,
+.city-result-item.is-selected {
+  background: #e8f3ef;
+}
+
+.city-result-item:last-child {
+  border-bottom: 0;
+}
+
+.city-result-empty {
+  padding: 10px 12px;
+  color: #666;
+  font-size: 14px;
+}
+
+.modal-ok {
+  float: right;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.countdown-simulator {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  body {
+    overflow-y: auto;
+  }
+
+  #main_table {
+    height: auto;
+    min-height: 100vh;
+    table-layout: auto;
+    background-attachment: fixed;
+  }
+
+  #main_table > tbody,
+  #main_table > tbody > tr,
+  #main_table > tbody > tr > td {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #clock_date,
+  #masjid_name_location {
+    width: 100%;
+  }
+
+  #masjid_name_location > tbody {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    align-items: center;
+    width: 100%;
+  }
+
+  #masjid_name_location > tbody > tr {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #masjid_name_location > tbody > tr > td {
+    display: block;
+    width: 100%;
+  }
+
+  #masjid_name_location > tbody > tr:last-child {
+    grid-column: 1 / -1;
+  }
+
+  #clock_date > tbody {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 64px;
+  }
+
+  #clock_date > tbody > tr {
+    display: block;
+    width: 33.333%;
+    height: auto;
+  }
+
+  #clock_date > tbody > tr > td {
+    display: block;
+    width: 100%;
+  }
+
+  #clock {
+    padding: 0;
+    font-size: clamp(1.25rem, 6vw, 2rem);
+    white-space: nowrap;
+  }
+
+  #date {
+    font-size: clamp(1.25rem, 6vw, 2rem);
+    white-space: nowrap;
+  }
+
+  #day_name {
+    padding: 0;
+    font-size: clamp(1.25rem, 6vw, 2rem);
+    white-space: nowrap;
+  }
+
+  #masjid_name_1 {
+    padding: 12px 4px 4px;
+    font-size: 7vw;
+    white-space: nowrap;
+  }
+
+  #masjid_name_2 {
+    padding: 12px 4px 4px;
+    font-size: 9vw;
+    white-space: nowrap;
+  }
+
+  #masjid_location {
+    padding-bottom: 12px;
+    font-size: 7vw;
+  }
+
+  #counter {
+    height: 72px;
+  }
+
+  #count_title,
+  #count_time {
+    margin-left: 12px;
+    font-size: 8vw;
+  }
+
+  .prayer-row {
+    padding: 6px;
+  }
+
+  .prayer-row > td {
+    padding: 3px 0;
+  }
+
+  .prayer_time_name {
+    display: table;
+    height: 72px;
+  }
+
+  .prayer_time_name > tbody {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .prayer_time_name > tbody > tr {
+    display: block;
+    width: 50%;
+    height: auto;
+  }
+
+  .prayer_time_name > tbody > tr > td {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .prayer_time {
+    font-size: 13vw;
+  }
+
+  .prayer_name {
+    font-size: 8vw;
+  }
+
+  .modal-content {
+    width: calc(100% - 24px);
+    max-width: none;
+    padding: 14px;
+  }
+
+  .city-results {
+    max-height: 50vh;
+  }
+
+}
