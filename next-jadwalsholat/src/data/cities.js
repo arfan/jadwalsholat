@@ -1,4 +1,4 @@
-export const defaultCityName = 'KOTA ADM. JAKARTA SELATAN';
+export const defaultCityName = 'DKI JAKARTA';
 export const cityList = [
   {
     "code": 11,

@@ -7,7 +7,7 @@ const DAY_NAMES = ['AHAD', 'SENIN', 'SELASA', 'RABU', 'KAMIS', "JUM'AT", 'SABTU'
 const DEFAULT_CITY_INDEX = cityList.findIndex((city) => city.city === defaultCityName);
 const FALLBACK_CITY_INDEX = DEFAULT_CITY_INDEX >= 0 ? DEFAULT_CITY_INDEX : 0;
 const DEFAULT_MASJID_LABEL = 'MASJID';
-const DEFAULT_MASJID_NAME = 'AL-MANAR';
+const DEFAULT_MASJID_NAME = 'AL-MASJID';
 
 function pad2(value) {
   return String(value).padStart(2, '0');
