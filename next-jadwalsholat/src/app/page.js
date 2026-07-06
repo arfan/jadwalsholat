@@ -30,6 +30,10 @@ function formatCountdown(ms) {
 }
 
 function getValidCityIndex(value) {
+  if (value === null || value === undefined || String(value).trim() === '') {
+    return FALLBACK_CITY_INDEX;
+  }
+
   const index = Number(value);
   return Number.isInteger(index) && cityList[index] ? index : FALLBACK_CITY_INDEX;
 }
