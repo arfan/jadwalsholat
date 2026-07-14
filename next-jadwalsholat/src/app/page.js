@@ -82,7 +82,8 @@ function computePrayerUi(momentLib, prayerMoments) {
     return {
       activeKey: null,
       counterTitle: 'SIAP-SIAP',
-      counterTime: '-00:00'
+      counterTime: '-00:00',
+      phase: 'idle'
     };
   }
 
@@ -105,7 +106,8 @@ function computePrayerUi(momentLib, prayerMoments) {
       return {
         activeKey: check.key,
         counterTitle: 'SIAP-SIAP',
-        counterTime: formatCountdown(diffMs)
+        counterTime: formatCountdown(diffMs),
+        phase: 'prepare'
       };
     }
 
@@ -113,7 +115,8 @@ function computePrayerUi(momentLib, prayerMoments) {
       return {
         activeKey: check.key,
         counterTitle: 'IQOMAH',
-        counterTime: formatCountdown(iqomahWindow + diffMs)
+        counterTime: formatCountdown(iqomahWindow + diffMs),
+        phase: 'iqomah'
       };
     }
   }
@@ -121,7 +124,8 @@ function computePrayerUi(momentLib, prayerMoments) {
   return {
     activeKey: null,
     counterTitle: 'SIAP-SIAP',
-    counterTime: '-00:00'
+    counterTime: '-00:00',
+    phase: 'idle'
   };
 }
 
@@ -165,7 +169,8 @@ export default function Page() {
   const [prayerUi, setPrayerUi] = useState({
     activeKey: null,
     counterTitle: 'SIAP-SIAP',
-    counterTime: '-00:00'
+    counterTime: '-00:00',
+    phase: 'idle'
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -251,7 +256,8 @@ export default function Page() {
           setPrayerUi({
             activeKey: 'fajr',
             counterTitle: simulation.title,
-            counterTime: formatCountdown(remainingMs)
+            counterTime: formatCountdown(remainingMs),
+            phase: simulation.phase
           });
         } else {
           countdownSimulationRef.current = null;
@@ -319,12 +325,14 @@ export default function Page() {
   const startCountdownSimulation = (title, minutes) => {
     countdownSimulationRef.current = {
       title,
+      phase: title === 'IQOMAH' ? 'iqomah' : 'prepare',
       endsAt: Date.now() + minutes * 60 * 1000
     };
     setPrayerUi({
       activeKey: 'fajr',
       counterTitle: title,
-      counterTime: formatCountdown(minutes * 60 * 1000)
+      counterTime: formatCountdown(minutes * 60 * 1000),
+      phase: title === 'IQOMAH' ? 'iqomah' : 'prepare'
     });
   };
 
@@ -358,6 +366,7 @@ export default function Page() {
   };
 
   const isActive = prayerUi.activeKey !== null;
+  const counterClassName = `counter-panel counter-panel--${prayerUi.phase}`;
   const tableOpacity = (key) => {
     if (!isActive) {
       return 1;
@@ -414,13 +423,16 @@ export default function Page() {
             </td>
           </tr>
           <tr height="30%">
-            <td colSpan="5">
-              <table height="100%" width="100%" id="counter" style={{ opacity: isActive ? 1 : 0 }}>
+            <td colSpan="6">
+              <table height="100%" width="100%" id="counter" className={counterClassName} style={{ opacity: isActive ? 1 : 0 }}>
                 <tbody>
                   <tr>
-                    <td width="50%"><div id="count_title">{prayerUi.counterTitle}</div></td>
-                    <td width="50%"><div id="count_time">{prayerUi.counterTime}</div></td>
-                    <td />
+                    <td>
+                      <div className="countdown-content">
+                        <div id="count_title">{prayerUi.counterTitle}</div>
+                        <div id="count_time">{prayerUi.counterTime}</div>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
