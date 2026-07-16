@@ -132,6 +132,7 @@ td {
   color: red;
   font-size: clamp(3rem, 8.6vmin, 7.5rem);
   line-height: 0.95;
+  white-space: nowrap;
 }
 
 .prayer_name {
@@ -139,6 +140,7 @@ td {
   color: #d8d6af;
   font-size: clamp(1.75rem, 4.9vmin, 4.35rem);
   line-height: 1;
+  white-space: nowrap;
 }
 
 #counter {
@@ -295,6 +297,21 @@ td {
 
 .countdown-simulator {
   display: none;
+}
+
+/* Keep all six prayer cards readable when a desktop window is narrowed. */
+@media (min-width: 641px) and (max-width: 1000px) {
+  .prayer-row > td {
+    padding-inline: 2px;
+  }
+
+  .prayer_time {
+    font-size: clamp(1.75rem, 5.2vw, 3.25rem);
+  }
+
+  .prayer_name {
+    font-size: clamp(0.9rem, 2.7vw, 1.7rem);
+  }
 }
 
 @media (max-width: 640px) {
