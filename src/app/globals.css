@@ -154,7 +154,7 @@ td {
 
 .counter-panel--iqomah {
   background:
-    linear-gradient(90deg, rgba(188, 46, 46, 0.18), rgba(0, 0, 0, 0.68) 22%, rgba(0, 0, 0, 0.68) 78%, rgba(188, 46, 46, 0.18)),
+    linear-gradient(90deg, rgba(99, 161, 147, 0.14), rgba(0, 0, 0, 0.68) 22%, rgba(0, 0, 0, 0.68) 78%, rgba(99, 161, 147, 0.14)),
     rgba(0, 0, 0, 0.82);
 }
 
@@ -185,7 +185,7 @@ td {
   line-height: 0.9;
   text-align: left;
   white-space: nowrap;
-  text-shadow: 0 0 18px rgba(255, 0, 0, 0.4);
+  text-shadow: none;
 }
 
 .counter-panel--prepare #count_time {
@@ -195,18 +195,6 @@ td {
 .counter-panel--iqomah #count_title,
 .counter-panel--iqomah #count_time {
   color: #ff1f1f;
-  animation: countdown-pulse 1s ease-in-out infinite;
-}
-
-@keyframes countdown-pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.72;
-  }
 }
 
 .modal {
